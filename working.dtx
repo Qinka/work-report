@@ -1,0 +1,472 @@
+% \iffalse meta-comment
+% Local Variables:
+% mode: doctex
+% TeX-master: t
+% End:
+%<*install>
+\input docstrip.tex
+\keepsilent
+\askforoverwritefalse
+\preamble
+---------:| ---------------------------------------------------------------
+working:| Xidian University ETVP Report.
+ Author:| Johann Lee
+ E-mail:| me@qinka.pro
+License:| Released under the LaTeX Project Public License v1.3c or later
+    See:| http://www.latex-project.org/lppl.txt
+\endpreamble
+\postamble
+
+Copyright (C) 2018 by Johann Lee <me@qinka.pro>
+---------------------------------------------------------------------------
+This work may be distributed and/or modified under the
+conditions of the LaTeX Project Public License, either version 1.3
+of this license or (at your option) any later version.
+The latest version of this license is in
+	http://www.latex-project.org/lppl.txt
+and version 1.3 or later is part of all distributions of LaTeX
+version 2005/12/01 or later.
+
+This work has the LPPL maintenance status `maintained'.
+
+The Current Maintainer of this work is Johann Lee <me@qinka.pro>.
+
+This work consists of the files working.dtx and working.ins
+and the derived filebase working.cls.
+\endpostamble
+
+\usedir{tex/xelatex/working}
+\generate{
+	\file{\jobname.cls}{\from{\jobname.dtx}{class}}
+	\file{\jobname.cfg}{\from{\jobname.dtx}{config}}
+}
+%</install>
+%<install>\endbatchfile
+%<*internal>
+\usedir{source/xelatex/xduthesis}
+\generate{
+  \file{\jobname.ins}{\from{\jobname.dtx}{install}}
+}
+\nopreamble\nopostamble
+% \usedir{doc/xelatex/xduthesis}
+% \generate{
+%   \file{README.rst}{\from{\jobname.dtx}{readme}}
+% }
+%</internal>
+% \iffalse
+% \fi
+%<*driver>
+\ProvidesFile{working.dtx}[2017/09/20, Johann Lee<me@qinka.pro>, Ver.0.3.1]
+%</driver>
+%<class>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+%<class>\ProvidesPackage{working}
+%<config>\ProvidesFile{working.cfg}
+%<class|config>[2017/09/20, Johann Lee<me@qinka.pro>, Ver.0.3.1]
+%
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage{working}[<+date+>]
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+\begin{document}
+  \DocInput{working.dtx}
+  \PrintChanges
+  \PrintIndex
+\end{document}
+%</driver>
+% \fi
+%
+% \CheckSum{398}
+%
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+%
+% \changes{<+version+>}{<+date+>}{Converted to DTX file}
+%
+% \DoNotIndex{\newcommand,\newenvironment}
+%
+% \providecommand*{\url}{\texttt}
+% \GetFileInfo{working.dtx}
+% \title{The \textsf{working} package}
+% \author{<+author+> \\ \url{<+email+>}}
+% \date{\fileversion~from \filedate}
+%
+% \maketitle
+%
+% \section{Introduction}
+%
+% Put text here.
+%
+% \section{Usage}
+%
+% Put text here.
+%
+%
+% \DescribeMacro{\vskpparbox}
+%
+%
+% \DescribeMacro{\rhparbox}
+%
+%
+% \DescribeMacro{\rihparbox}
+%
+%
+% \DescribeMacro{\riparbox}
+%
+%
+% \DescribeMacro{\newrt}
+%
+%
+% \DescribeMacro{\subreport}
+%
+%
+% \DescribeMacro{\document}
+%
+%
+% \DescribeMacro{\enddocument}
+%
+
+%
+% \StopEventually{}
+%
+% \section{Implementation}
+%
+% \iffalse
+%<*class>
+% \fi
+%
+%% The template for work report
+%% Copyright (C) 2017, Johann Lee <me@qinka.pro> (maintainer)
+%%               2017, Q.L. Lee <liql@sxufe.edu.cn>
+%
+%    \begin{macrocode}
+\AtEndOfClass{\input{working.cfg}}
+\newif\if@daily
+\newif\if@english
+\@dailyfalse
+\@englishtrue
+\DeclareOption{weekly}
+   {\@dailyfalse}
+\DeclareOption{daily}
+   {\@dailytrue}
+\DeclareOption{english}
+	{\@englishtrue}
+\DeclareOption{chinese}
+	{\@englishfalse}
+\ExecuteOptions{}
+\ProcessOptions
+\LoadClass[multi=pagegap]{standalone}
+%    \end{macrocode}
+%% Use boxed mini page
+%    \begin{macrocode}
+\RequirePackage{boxedminipage}
+%    \end{macrocode}
+%% Use hyperref
+%    \begin{macrocode}
+\RequirePackage{hyperref}
+\hypersetup{colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=red,bookmarksnumbered}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\RequirePackage{draftfigure}
+\RequirePackage{xeCJK}
+%    \end{macrocode}
+%
+%%
+%% tokens for report
+%%
+%
+% your name
+%    \begin{macrocode}
+\newtoks\name
+%    \end{macrocode}
+% student id number
+%    \begin{macrocode}
+\newtoks\stuid
+%    \end{macrocode}
+% room
+%    \begin{macrocode}
+\newtoks\room
+%    \end{macrocode}
+% Research direction
+%    \begin{macrocode}
+\newtoks\rchdr
+%    \end{macrocode}
+% current research direction
+%    \begin{macrocode}
+\newtoks\crchdr
+\RequirePackage{tikz}
+\RequirePackage{tikzpagenodes}
+\RequirePackage{subfig}
+\RequirePackage{ulem}
+%    \end{macrocode}
+%% box
+%    \begin{macrocode}
+\newlength\edgeblank
+\newlength\edgeborder
+\newlength\boxwidth
+\newlength\boxheight
+\setlength{\edgeborder}{1cm}
+\setlength{\edgeblank}{1.5cm}
+\setlength{\boxwidth}{\paperwidth}
+\setlength{\boxheight}{\paperheight}
+\addtolength{\edgeborder}{\edgeblank}
+\addtolength{\boxwidth}{-\edgeblank}
+\addtolength{\boxheight}{-\edgeblank}
+\standaloneconfig{border=\edgeborder}
+\newlength{\tempskip}
+%    \end{macrocode}
+%% counter
+%    \begin{macrocode}
+\newcounter{report@counter}
+\newcounter{report@draft@counter}
+\newcounter{report@draft@limit}
+%    \end{macrocode}
+%
+% \begin{macro}{\vskpparbox}
+%% new comment for parbox
+%% parbox with vskip
+%    \begin{macrocode}
+\newcommand{\vskpparbox}[3]{\parbox{#2}{\vskip#1 #3 \vskip#1}}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\rhparbox}
+%% parbox for report's head
+%    \begin{macrocode}
+\newcommand{\rhparbox}[2]{\vskpparbox{.25em}{#1}{#2}}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\rihparbox}
+%% parbox for items' head
+%    \begin{macrocode}
+\newcommand{\rihparbox}[2]{\vskpparbox{.5em}{#1}{#2}}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\riparbox}
+%% parbox for items
+%    \begin{macrocode}
+\newcommand{\riparbox}[2]{\vskpparbox{.7em}{#1}{\parindent2em #2}}
+%    \end{macrocode}
+% \end{macro}
+%
+%% new length
+%    \begin{macrocode}
+\newlength{\squwidth}
+\newlength{\squiwidth}
+%    \end{macrocode}
+%
+% \begin{macro}{\newrt}
+%% new return
+%    \begin{macrocode}
+\newcommand{\newrt}{\setlength{\tempskip}{\baselineskip}%
+	\setlength{\baselineskip}{-\baselineskip}%
+	\setlength{\baselineskip}{\tempskip}}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\report@cmd}
+%% new command
+%    \begin{macrocode}
+\newcommand{\report@@cmd}[4]{%
+	\endboxedminipage\endminipage\endpagegap%
+	\newrt%
+	\pagegap\minipage{21cm}\boxedminipage{21cm}%
+	\setlength\squwidth{20cm} \setlength\squiwidth{20cm}
+	\advance\squwidth -12\tabcolsep \advance\squiwidth -2\tabcolsep
+	\pdfbookmark[1]{#1}{report:#1}
+	\label{report:#3}
+	\stepcounter{report@draft@counter}
+	\setcounter{report@counter}{0}
+	\begin{center}\begin{tabular}{@{\extracolsep{\fill}}|c|c|c|c|c|c|} \hline
+			\rhparbox{0.15\squwidth}{\centering \report@weekly@text} & \multicolumn{3}{|c|}{\rhparbox{0.5\squwidth}{\centering #1}}
+			&\rhparbox{0.17\squwidth}{\centering \report@hours@text} &  \rhparbox{0.17\squwidth}{\centering #4} \\ \hline
+			\rhparbox{0.15\squwidth}{\centering \report@name@text} & \rhparbox{0.17\squwidth}{\centering \the\name} &
+			\rhparbox{0.17\squwidth}{\centering \report@stuid@text} & \rhparbox{0.17\squwidth}{\centering \the\stuid}
+			& \rhparbox{0.17\squwidth}{\centering \report@room@text} &\rhparbox{0.17\squwidth}{\centering \the\room} \\ \hline
+			\rhparbox{0.15\squwidth}{\centering #1} & \multicolumn{5}{|c|}{\rhparbox{0.84\squwidth}{\centering \the\rchdr}} \\ \hline
+			\rhparbox{0.15\squwidth}{\centering #2} & \multicolumn{5}{|c|}{\rhparbox{0.84\squwidth}{\centering \the\crchdr}} \\ \hline
+	\end{tabular}\end{center}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\report@weekly@cmd}
+%% new command
+%    \begin{macrocode}
+\newcommand{\report@weekly@cmd}[2]{\report@@cmd{\report@rchdr@text}{\report@crchdr@text}{#1}{#2}}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\report@daily@cmd}
+%    \begin{macrocode}
+\newcommand{\report@daily@cmd}[2]{\report@@cmd{\report@prj@text}{\report@prjcur@text}{#1}{#2}}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\weekly@task}
+%    \begin{macrocode}
+\newcommand{\weekly@task}{   \subreport{\weekly@task@name}}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\weekly@problem}
+%    \begin{macrocode}
+\newcommand{\weekly@problem}{\subreport{\weekly@problem@name}}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\weekly@plan}
+%    \begin{macrocode}
+\newcommand{\weekly@plan}{   \subreport{\weekly@plan@name}}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\daily@task}
+%    \begin{macrocode}
+\newcommand{\daily@task}{   \subreport{\daily@task@name}}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\daily@problem}
+%    \begin{macrocode}
+\newcommand{\daily@problem}{\subreport{\daily@problem@name}}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\daily@plan}
+%    \begin{macrocode}
+\newcommand{\daily@plan}{   \subreport{\daily@plan@name}}
+%    \end{macrocode}
+% \end{macro}
+%
+%    \begin{macrocode}
+\if@daily
+\let\report\report@daily@cmd
+\let\task\daily@task
+\let\problem\daily@problem
+\let\plan\daily@plan
+\else
+\let\report\report@weekly@cmd
+\let\task\weekly@task
+\let\problem\weekly@problem
+\let\plan\weekly@plan
+\fi
+%    \end{macrocode}
+%
+% \begin{macro}{\subreport}
+%%%
+%    \begin{macrocode}
+\newcommand{\subreport}[1]{%
+		\endboxedminipage \\
+		\boxedminipage{21cm}
+    	\addtocounter{report@counter}{1}
+    	\thereport@counter.\quad #1
+    	\endboxedminipage
+    	\par\noindent
+    	\boxedminipage{21cm}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+%    \begin{macrocode}
+\let\oldbegdocument\document
+\let\oldenddocument\enddocument
+%    \end{macrocode}
+%
+% \begin{macro}{\document}
+%    \begin{macrocode}
+\def\document{\oldbegdocument\pagegap\minipage{21cm}\boxedminipage{21cm}\setcounter{report@draft@counter}{0}}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\enddocument}
+%    \begin{macrocode}
+\def\enddocument{\endboxedminipage\endminipage\endpagegap\oldenddocument}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\document}
+%    \begin{macrocode}
+\newcommand{\setreportdraft}[1]{\setcounter{report@draft@limit}{#1}}
+\let\report@origin@includegraphics\includegraphics
+\renewcommand*{\includegraphics}[2][]{ %
+\ifnum\the\value{report@draft@counter}<\the\value{report@draft@limit}
+\report@origin@includegraphics[draft=false,#1]{#2}
+\else
+\report@origin@includegraphics[draft=true,#1]{#2}
+\fi}
+%    \end{macrocode}
+% \end{macro}
+%
+% \iffalse
+%</class>
+% \fi
+%
+%<*config>
+\if@english
+\newcommand{\weekly@task@name}{This week's task}
+\newcommand{\weekly@problem@name}{This week's problem}
+\newcommand{\weekly@plan@name}{Next week's plan}
+\newcommand{\daily@task@name}{Current task}
+\newcommand{\daily@problem@name}{Current problem}
+\newcommand{\daily@plan@name}{Tomorrow plan}
+\newcommand\report@weekly@text{Date}
+\newcommand\report@hours@text{Working Hours}
+\newcommand\report@name@text{Name}
+\newcommand\report@stuid@text{Stu.Id.}
+\newcommand\report@room@text{Room}
+\newcommand\report@rchdr@text{Research Direction}
+\newcommand\report@crchdr@text{Current Research Direction}
+\newcommand{\report@prj@text}{Project}
+\newcommand{\report@prjcur@text}{Current Task}
+\else
+\newcommand{\weekly@task@name}{A}
+\newcommand{\weekly@problem@name}{B}
+\newcommand{\weekly@plan@name}{C}
+\newcommand{\daily@task@name}{D}
+\newcommand{\daily@problem@name}{E}
+\newcommand{\daily@plan@name}{F}
+\newcommand\report@weekly@text{G}
+\newcommand\report@hours@text{W}
+\newcommand\report@name@text{N}
+\newcommand\report@stuid@text{S}
+\newcommand\report@room@text{R}
+\newcommand\report@rchdr@text{RD}
+\newcommand\report@crchdr@text{CRD}
+\newcommand{\report@prj@text}{}
+\newcommand{\report@prjcur@text}{CT}
+\fi
+%</config>
+%
+% \Finale
+\endinput
