@@ -295,12 +295,12 @@ and the derived filebase working.cls.
 	\pagegap\minipage{21cm}\boxedminipage{21cm}%
 	\setlength\squwidth{20cm} \setlength\squiwidth{20cm}
 	\advance\squwidth -12\tabcolsep \advance\squiwidth -2\tabcolsep
-	\pdfbookmark[1]{#1}{report:#1}
+	\pdfbookmark[1]{#3}{report:#3}
 	\label{report:#3}
 	\stepcounter{report@draft@counter}
 	\setcounter{report@counter}{0}
 	\begin{center}\begin{tabular}{@{\extracolsep{\fill}}|c|c|c|c|c|c|} \hline
-			\rhparbox{0.15\squwidth}{\centering \report@weekly@text} & \multicolumn{3}{|c|}{\rhparbox{0.5\squwidth}{\centering #1}}
+			\rhparbox{0.15\squwidth}{\centering \report@weekly@text} & \multicolumn{3}{|c|}{\rhparbox{0.5\squwidth}{\centering #3}}
 			&\rhparbox{0.17\squwidth}{\centering \report@hours@text} &  \rhparbox{0.17\squwidth}{\centering #4} \\ \hline
 			\rhparbox{0.15\squwidth}{\centering \report@name@text} & \rhparbox{0.17\squwidth}{\centering \the\name} &
 			\rhparbox{0.17\squwidth}{\centering \report@stuid@text} & \rhparbox{0.17\squwidth}{\centering \the\stuid}
